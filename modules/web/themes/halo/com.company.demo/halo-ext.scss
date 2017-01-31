@@ -1,0 +1,10 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_company_demo-halo-ext {
+  .v-grid-row.inactive .v-grid-cell {
+    text-decoration: line-through;
+  }
+
+  .v-grid-cell.right-align {
+    text-align: right;
+  }
+}

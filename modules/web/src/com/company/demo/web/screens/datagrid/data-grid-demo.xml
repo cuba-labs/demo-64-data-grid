@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://demo.caption"
+        class="com.company.demo.web.screens.datagrid.DataGridDemo"
+        messagesPack="com.company.demo.web.screens.datagrid">
+    <dsContext>
+        <collectionDatasource id="usersDs"
+                              class="com.haulmont.cuba.security.entity.User"
+                              view="user.browse">
+            <query>
+                <![CDATA[ select u from sec$User u ]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="tabSheet">
+        <tabSheet id="tabSheet" width="100%">
+            <tab id="basicTab"
+                 caption="Basic"
+                 expand="basicDataGrid"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <hbox spacing="true">
+                    <checkBox id="headerVisible"
+                              caption="Header Visible"/>
+                    <checkBox id="sortable"
+                              caption="Sortable"/>
+                    <checkBox id="reorderingAllowed"
+                              caption="Reordering Allowed"/>
+                    <checkBox id="columnsCollapsingAllowed"
+                              caption="Columns Collapsing Allowed"/>
+                </hbox>
+                <dataGrid id="basicDataGrid"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="frozenColumnsTab"
+                 caption="Frozen Columns"
+                 expand="frozenColumnsDataGrid"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <hbox spacing="true">
+                    <label value="Frozen Column Count:"
+                           align="MIDDLE_LEFT"/>
+                    <textField id="frozenColumnCountField"
+                               datatype="int"/>
+                </hbox>
+                <dataGrid id="frozenColumnsDataGrid"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"
+                                width="400px"/>
+                        <column property="name"
+                                width="400px"/>
+                        <column property="position"
+                                width="400px"/>
+                        <column property="group"
+                                width="400px"/>
+                        <column property="email"
+                                width="400px"/>
+                        <column property="timeZone"
+                                width="400px"/>
+                        <column property="active"
+                                width="400px"/>
+                        <column property="changePasswordAtNextLogon"
+                                width="400px"/>
+                        <column property="createTs"
+                                width="400px"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="selectionModeTab"
+                 caption="Selection Mode"
+                 expand="selectionModeDataGrid"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <hbox spacing="true">
+                    <label value="Selection Mode:"
+                           align="MIDDLE_LEFT"/>
+                    <lookupField id="selectionModeField"
+                                 nullOptionVisible="false"
+                                 textInputAllowed="false"/>
+                </hbox>
+                <dataGrid id="selectionModeDataGrid"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="listenersTab"
+                 caption="Listeners"
+                 expand="listenersDataGrid"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="listenersDataGrid"
+                          datasource="usersDs"
+                          height="100%"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="styleProvidersTab"
+                 caption="Style"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="rowStyleDataGrid"
+                          caption="RowStyleProvider"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+                <dataGrid id="cellStyleDataGrid"
+                          caption="CellStyleProvider"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="largeDataSetTab"
+                 caption="Large Dataset"
+                 expand="largeDataSetBox"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <hbox spacing="true">
+                    <textField id="usersCountField"
+                               datatype="int"/>
+                    <button caption="Generate"
+                            invoke="generateUsers"/>
+                </hbox>
+                <hbox id="largeDataSetBox"
+                      height="100%"
+                      spacing="true"
+                      width="100%">
+                    <table id="largeDataSetTable"
+                           caption="Table"
+                           height="100%"
+                           width="100%">
+                        <columns>
+                            <column id="login"/>
+                            <column id="group"/>
+                            <column id="name"/>
+                            <column id="active"/>
+                        </columns>
+                        <rows datasource="usersDs"/>
+                    </table>
+                    <dataGrid id="largeDataSetDataGrid"
+                              caption="DataGrid"
+                              datasource="usersDs"
+                              height="100%"
+                              settingsEnabled="false"
+                              width="100%">
+                        <columns>
+                            <column property="login"/>
+                            <column property="group"/>
+                            <column property="name"/>
+                            <column property="active"/>
+                        </columns>
+                    </dataGrid>
+                </hbox>
+            </tab>
+            <tab id="rendererTab"
+                 caption="Renderer"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="beforeRendererDataGrid"
+                          caption="Without Renderer"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+                <dataGrid id="rendererDataGrid"
+                          caption="With Renderer"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="rendererAndConverterTab"
+                 caption="Renderer and Converter"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="beforeRendererAndConverterDataGrid"
+                          caption="Generated Column"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+                <dataGrid id="noRendererAndConverterDataGrid"
+                          caption="With Converter"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+                <dataGrid id="rendererAndConverterDataGrid"
+                          caption="With Renderer and Converter"
+                          datasource="usersDs"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="login"/>
+                        <column property="group"/>
+                        <column property="name"/>
+                        <column property="active"/>
+                        <column property="createTs"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

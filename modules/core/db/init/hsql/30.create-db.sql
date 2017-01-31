@@ -1,0 +1,3 @@
+insert into SEC_USER
+(ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, LOGIN, LOGIN_LC, PASSWORD, NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, POSITION_, EMAIL, LANGUAGE_, TIME_ZONE, TIME_ZONE_AUTO, ACTIVE, CHANGE_PASSWORD_AT_LOGON, GROUP_ID, IP_MASK)
+values ('d51e31b1-0a51-cac0-69a5-9a3c8bee1440', 4, '2017-01-30 14:34:18', 'admin', '2017-01-30 14:35:04', 'admin', null, null, 'inactive', 'inactive', '39b17f1364a02c2ffd85593480a819ff315f2e0c', 'Inactive', null, null, null, null, null, 'en', null, null, false, false, '0fa2b1a5-1d68-4d69-9fbd-dff348347f93', null);

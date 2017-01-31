@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://sandbox.caption"
+        class="com.company.demo.web.screens.Screen"
+        messagesPack="com.company.demo.web.screens.datagrid">
+    <dsContext>
+        <collectionDatasource id="usersDs"
+                              class="com.haulmont.cuba.security.entity.User"
+                              view="user.browse">
+            <query>
+                <![CDATA[ select u from sec$User u ]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <dataGrid id="dataGrid"
+                  datasource="usersDs"
+                  height="100%"
+                  width="100%">
+            <columns>
+                <column property="login"/>
+                <column property="group"/>
+                <column property="name"/>
+                <column property="active"/>
+                <column property="createTs"/>
+            </columns>
+        </dataGrid>
+    </layout>
+</window>
